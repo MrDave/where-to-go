@@ -14,7 +14,7 @@ class Place(models.Model):
 
 class Image(models.Model):
     file = models.ImageField(verbose_name="image file")
-    place = models.ForeignKey(Place, on_delete=models.CASCADE)
+    place = models.ForeignKey(Place, on_delete=models.CASCADE, related_name="images")
     priority = models.IntegerField()
 
     class Meta:
