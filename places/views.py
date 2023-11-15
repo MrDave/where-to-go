@@ -1,12 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.template import loader
 from .models import Place
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
-    template = loader.get_template("index.html")
-
     places = Place.objects.all()
 
     features = []
@@ -32,5 +30,4 @@ def index(request):
     }
 
     context = {"places": places_geojson}
-    rendered_page = template.render(context, request)
-    return HttpResponse(rendered_page)
+    return render(request, "index.html", context)
