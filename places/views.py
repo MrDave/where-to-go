@@ -31,3 +31,8 @@ def index(request):
 
     context = {"places": places_geojson}
     return render(request, "index.html", context)
+
+
+def place_details(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
+    return HttpResponse(str(place.title))
