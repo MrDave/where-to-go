@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import *
 from django.utils.html import format_html
+from adminsortable2.admin import SortableTabularInline, SortableAdminBase
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableTabularInline):
     model = Image
 
     def image_thumbnail(self):
@@ -12,10 +13,12 @@ class ImageInline(admin.TabularInline):
         )
 
     readonly_fields = (image_thumbnail,)
+    ordering = ["priority",]
+    extra = 3
 
 
 @admin.register(Place)
-class PlaceAdmin(admin.ModelAdmin):
+class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     inlines = [
         ImageInline
     ]
@@ -23,4 +26,5 @@ class PlaceAdmin(admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["place", "file"]
+    ordering = ["place"]
