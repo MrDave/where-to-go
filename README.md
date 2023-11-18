@@ -1,6 +1,8 @@
 # Where to Go
 Interactive map with points of interest in Moscow.
 
+See project in action [here](https://mrdave.pythonanywhere.com/)
+
 ## How to install
 Download the project to your local machine.
 
