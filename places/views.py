@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from .models import Place
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
