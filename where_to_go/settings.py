@@ -31,7 +31,7 @@ SECRET_KEY = env.str("SECRET_KEY", "REPLACE_ME")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG", True)
 
-ALLOWED_HOSTS = ["MrDave.pythonanywhere.com", ".localhost", "127.0.0.1", "[::1]"]
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", [])
 
 
 # Application definition
