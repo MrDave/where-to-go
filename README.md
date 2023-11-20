@@ -47,6 +47,30 @@ python manage.py createsuperuser
 ```
 Go to `localhost:8000/admin`. Log in and navigate to Places. From there you can add new places, edit their info and attach images.
 
+Alternatively, if you have valid data in JSON format, it can be added to the database using `load_place command`. Several links can be used at once when separated with a space.
+```commandline
+python manage.py load_place http://file/address.json
+
+python manage.py load_place link1 link2 link3
+```
+
+
+How the data should look:
+```json
+{
+    "title": "Title",
+    "imgs": [
+        "link1.jpg",
+        "link2.jpg"
+    ],
+    "description_short": "Short description",
+    "description_long": "<p>Longer description.</p>",
+    "coordinates": {
+        "lng": 12.345678,
+        "lat": 34.567890
+    }
+}
+```
 ## Project Goals
 
 The code is written for educational purposes on online-course for web-developers [dvmn.org](https://dvmn.org/).  
