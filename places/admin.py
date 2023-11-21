@@ -1,7 +1,8 @@
-from django.contrib import admin
-from .models import *
-from django.utils.html import format_html
 from adminsortable2.admin import SortableTabularInline, SortableAdminBase
+from django.contrib import admin
+from django.utils.html import format_html
+
+from .models import *
 
 
 class ImageInline(SortableTabularInline):
