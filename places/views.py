@@ -9,10 +9,8 @@ from .models import Place
 def index(request):
     places = Place.objects.all()
 
-    features = []
-
-    for place in places:
-        feature = {
+    features = [
+        {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
@@ -24,7 +22,8 @@ def index(request):
                 "detailsUrl": reverse("place-details", kwargs={"place_id": place.id})
             }
         }
-        features.append(feature)
+        for place in places
+    ]
 
     places_geojson = {
         "type": "FeatureCollection",
