@@ -28,3 +28,4 @@ class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
 class ImageAdmin(admin.ModelAdmin):
     list_display = ["place", "file"]
     ordering = ["place"]
+    raw_id_fields = ["place"]
