@@ -22,10 +22,10 @@ from django.urls import path, include
 from places import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.index),
-    path('places/<int:place_id>/', views.show_place_details, name="place-details"),
-    path('tinymce/', include('tinymce.urls'))
+    path("admin/", admin.site.urls),
+    path("", views.index),
+    path("places/<int:place_id>/", views.show_place_details, name="place-details"),
+    path("tinymce/", include("tinymce.urls"))
 ]
 
 if settings.DEBUG:
