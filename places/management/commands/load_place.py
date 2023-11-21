@@ -15,17 +15,16 @@ class Command(BaseCommand):
         for url in options["json_urls"]:
             response = requests.get(url)
             response.raise_for_status()
-            place_info = response.json()
+            payload = response.json()
 
             place, created = Place.objects.get_or_create(
-                title=place_info["title"],
-                short_description=place_info["description_short"],
-                long_description=place_info["description_long"],
-                lon=place_info["coordinates"]["lng"],
-                lat=place_info["coordinates"]["lat"]
+                title=payload["title"],
+                short_description=payload["description_short"],
+                long_description=payload["description_long"],
+                lon=payload["coordinates"]["lng"],
+                lat=payload["coordinates"]["lat"]
             )
-            place.save()
-            for number, img_url in enumerate(place_info["imgs"]):
+            for number, img_url in enumerate(payload["imgs"]):
                 response = requests.get(img_url)
                 response.raise_for_status()
 
