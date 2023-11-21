@@ -9,7 +9,12 @@ class Command(BaseCommand):
     help = "Upload JSON data to db."
 
     def add_arguments(self, parser):
-        parser.add_argument("json_urls", nargs="+", type=str)
+        parser.add_argument(
+            "json_urls",
+            nargs="+",
+            type=str,
+            help="one or several url link(s) to json file(s) with location info"
+        )
 
     def handle(self, *args, **options):
         for url in options["json_urls"]:
@@ -19,10 +24,12 @@ class Command(BaseCommand):
 
             place, created = Place.objects.get_or_create(
                 title=payload["title"],
-                short_description=payload["description_short"],
-                long_description=payload["description_long"],
                 lon=payload["coordinates"]["lng"],
-                lat=payload["coordinates"]["lat"]
+                lat=payload["coordinates"]["lat"],
+                defaults={
+                    "short_description": payload["description_short"],
+                    "long_description": payload["description_long"],
+                }
             )
             for number, img_url in enumerate(payload["imgs"]):
                 response = requests.get(img_url)
