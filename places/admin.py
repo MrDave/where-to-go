@@ -8,12 +8,12 @@ from .models import *
 class ImageInline(SortableTabularInline):
     model = Image
 
-    def image_thumbnail(self):
+    def show_image_thumbnail(self):
         return format_html(
             '<img src="{}" style="max-width:200px; max-height:200px"/>'.format(self.file.url)
         )
 
-    readonly_fields = (image_thumbnail,)
+    readonly_fields = (show_image_thumbnail,)
     ordering = ["priority",]
     extra = 3
 

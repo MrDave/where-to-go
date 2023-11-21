@@ -35,7 +35,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def place_details(request, place_id):
+def show_place_details(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     response = {
         "title": place.title,
