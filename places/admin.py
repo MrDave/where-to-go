@@ -7,6 +7,8 @@ from .models import *
 
 class ImageInline(SortableTabularInline):
     model = Image
+    ordering = ["priority",]
+    extra = 3
 
     def show_image_thumbnail(self):
         return format_html(
@@ -15,8 +17,6 @@ class ImageInline(SortableTabularInline):
         )
 
     readonly_fields = (show_image_thumbnail,)
-    ordering = ["priority",]
-    extra = 3
 
 
 @admin.register(Place)
