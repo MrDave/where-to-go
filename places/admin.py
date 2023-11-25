@@ -11,10 +11,10 @@ class ImageInline(SortableTabularInline):
     extra = 3
     readonly_fields = ["show_image_thumbnail"]
 
-    def show_image_thumbnail(self):
+    def show_image_thumbnail(self, image):
         return format_html(
             "<img src='{}' style='max-width:200px; max-height:200px'/>",
-            self.file.url
+            image.file.url
         )
 
 
