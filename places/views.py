@@ -35,7 +35,7 @@ def index(request):
 
 
 def show_place_details(request, place_id):
-    place = get_object_or_404(Place.objects.all().prefetch_related("images"), id=place_id)
+    place = get_object_or_404(Place.objects.prefetch_related("images"), id=place_id)
     response = {
         "title": place.title,
         "imgs": [request.build_absolute_uri(image.file.url) for image in place.images.all()],
